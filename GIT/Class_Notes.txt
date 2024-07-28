@@ -352,7 +352,223 @@ Day 2: 28th July 2024
 		Create dockerhub account : https://hub.docker.com
 		
 		Install Visual Studio Code : https://code.visualstudio.com/download
-	
+
+  501  git --version
+  502  pwd
+  503  clear
+  504  cd d:
+  505  mkdir Edu-PoW-July27
+  506  cd Edu-PoW-July27/
+  507  pwd
+  508  mkdir project-repo1
+  509  cd project-repo1/
+  510  clear
+  511  pwd
+  512  cd ..
+  513  ls
+  514  mkdir project-repo2
+  515  ls
+  516  clear
+  517  ls
+  518  cd project-repo1
+  519  clear
+  520  git init
+  521  ls
+  522  ls -
+  523  ls -a
+  524  cd .git/
+  525  ls
+  526  clear
+  527  ls
+  528  cd ..
+  529  ls
+  530  clear
+  531  git status
+  532  ls
+  533  echo "Hello"
+  534  echo "record" >> file1.txt
+  535  ls
+  536  cat file1.txt
+  537  clear
+  538  git status
+  539  git add file1.txt
+  540  git status
+  541  git commit -m "Created file1.txt"
+  542  git log
+  543  git config user.name "loksai"
+  544  echo "rec1" >> file2.txt
+  545  git add file2.txt
+  546  git commit -m "Created file2.txt"
+  547  git log
+  548  cd ..
+  549  ls
+  550  cd project-repo2
+  551  clear
+  552  git init
+  553  ls
+  554  echo "rec1" >> file1.txt
+  555  git add file1.txt
+  556  git commit -m "Created file1.txt"
+  557  git log
+  558  clear
+  559  git status
+  560  ls
+  561  git log
+  562  clear
+  563  echo "rec1" >> s1.txt
+  564  git status
+  565  ls
+  566  git ls-files
+  567  git add s1.txt
+  568  ls
+  569  git ls-files
+  570  clear
+  571  git commit -m "Created s1.txt"
+  572  clear
+  573  git log
+  574  clear
+  575  ls
+  576  echo "rec1" >> q1.txt
+  577  echo "rec1" >> q2.txt
+  578  echo "rec1" >> q3.txt
+  579  git status
+  580  echo "rec1" >> a1.java
+  581  echo "rec1" >> a2.java
+  582  echo "rec1" >> a3.java
+  583  echo "rec1" >> w1.md
+  584  echo "rec1" >> w2.md
+  585  echo "rec1" >> w3.md
+  586  echo "rec1" >> e1.doc
+  587  echo "rec1" >> e2.doc
+  588  echo "rec1" >> e3.doc
+  589  clear
+  590  ls
+  591  git status
+  592  git add a1.java
+  593  git status
+  594  git add e1.doc w1.md
+  595  git status
+  596  git add *.doc q1.txt
+  597  git status
+  598  git add .
+  599  git status
+  600  git log
+  601  git log --oneline
+  602  git log -1
+  603  git log -2
+  604  git log
+  605  git log --oneline -1
+  606  git log --oneline -2
+  607  git log --oneline -3
+  608  git log
+  609  git log --stat
+  610  git log --stat -1
+  611  git log --oneline
+  612  git show a1eed86
+  613  git log --oneline
+  614  git show bcc9647
+  615  clear
+  616  git status
+  617  git commit -m "Created some files"
+  618  git status
+  619  git log --oneline
+  620  git show 600bfd9
+  621  clear
+  622  git log --oneline
+  623  echo "rec1" >> k1.txt
+  624  git add .
+  625  git commit -m "kkjkjkhk"
+  626  git log --oneline
+  627  git commit -m "valid message"
+  628  git log --oneline
+  629  git commit --amend -m "Valid Msg"
+  630  git log --oneline
+  631  clear
+  632  git log --oneline
+  633  git status
+  634  echo "rec1" >> dummyfile1.txt
+  635  git status
+  636  git add .
+  637  git status
+  638  git ls-files
+  639  ls
+  640  git status
+  641  git rm --cached dummyfile1.txt
+  642  git status
+  643  git ls-files
+  644  ls
+  645  git status
+  646  git add .
+  647  clera
+  648  clear
+  649  ls
+  650  git ls-files
+  651  git rm -f dummyfile1.txt
+  652  git status
+  653  git ls-files
+  654  ls
+  655  git status
+  656  cat file1.txt
+  657  echo "rec2" >> file1.txt
+  658  echo "rec2" >> file2.txt
+  659  echo "rec2" >> file3.txt
+  660  git add .
+  661  cat file1.txt
+  662  git commit -m "testing"
+  663  ckear
+  664  clear
+  665  cat file1.txt
+  666  echo "rec3" >> file1.txt
+  667  git status
+  668  git diff
+  669  git commit -m "asdfas"
+  670  git add .
+  671  git commit -m "asdfas"
+  672  clear
+  673  cat file1.txt
+  674  ehco "new record" > file1.txt
+  675  echo "new record" > file1.txt
+  676  cat file1
+  677  cat file1.txt
+  678  git diff
+  679  git add .
+  680  git commit -m "asdf"
+  681  git diff
+  682  clear
+  683  cd ..
+  684  ls
+  685  mkdir project-repo3
+  686  cd project-repo3
+  687  clear
+  688  git init
+  689  vi .gitignore
+  690  git status
+  691  git add .
+  692  git commit -m "Initial Commit - .gitignore"
+  693  clear
+  694  ls
+  695  ls -a
+  696  clear
+  697  cat .gitignore
+  698  ls
+  699  echo "rec1" >> s1.java
+  700  git status
+  701  echo "rec1" >> sample1.txt
+  702  git status
+  703  echo "rec1" >> sample.txt
+  704  git status
+  705  ls
+  706  cat .gitignore
+  707  echo "rec1" >> a1.doc
+  708  git status
+  709  clear
+  710  git status
+  711  git add .
+  712  git commit -m "asdf"
+  713  clear
+  714  git status
+  715  history
+
 Next ::
 
 	git revert 
