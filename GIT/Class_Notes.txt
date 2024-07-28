@@ -1,0 +1,367 @@
+	Version Control System Using GIT :::::
+	
+	
+	Continuous Development :::
+	
+		Version Control System :::
+	
+			Web application:
+			
+			<html>
+			---
+			-
+			-
+			-
+			-
+			-
+			</html>
+			
+			save this file as index.html 
+			Testing 
+			
+			<html>
+			---
+			-asdf
+			-asdfasdf
+			-
+			-asdfsdf
+			-
+			</html>
+			
+			save as index.html
+			test 
+			
+			
+			Version Control System 
+			
+			index.html 			index.html_V1.0 (Tag/Version_no/Commit_id)
+			index.html 			index.html_V1.1
+			index.html 			index.html_V1.2
+			index.html 			index.html_V1.3
+			index.html 			index.html_V1.4
+			
+				- It is used to version control the source code changes
+				- It is used to track the source code changes 
+				
+		Type of Version Control System :
+		
+			- Local VCS 
+			- Centralized VCS 
+			- Distributed VCS
+			
+			
+		GIT ::
+		
+			- Is a open source Distributed VCS 
+			- Used to Version Control the Changes 
+			- Used to Track the Changes 
+			- Used to Perform Parallel Development (Using Branching Techniques)
+			
+		GITHUB	- Remote Server used to maintain the remote git repositories (GUI Based)
+
+		GIT 	- git client installed in the local machine to version control the changes - Comman Line Utility
+		
+		
+		Repository -> Is a collection of files and folders 
+		
+		Azure Repo 
+		AWS Code Commit 
+		gitlab
+		bitbucket 
+		
+		GITHUB 		- Create GITHUB Account 
+		
+		git client 	- To be installed in the local Machine 
+		
+Next :
+
+	GIT 
+
+#######################
+Day 2: 28th July 2024
+#######################
+
+	GIT :
+	
+	Install GIT Client in Local Machine 
+	
+	Working with GIT 
+	
+	Git file workflow 
+	
+	Git Misc. Commands 
+	
+	Git Branching Techniques
+	
+	Git Branching Strategies 
+	
+	Remote Repository
+	
+	Pre-Requisites :
+		Lab Environments 
+			AWS Cloud Platform to create VMs and install DevOps Tools
+				- Create AWS Free Tier Account 
+				
+	Install GIT Client in Local Machine :::
+	
+		https://git-scm.com/downloads
+		
+		git --version 
+		
+		On Windows Machine :
+		
+			git bash
+			git cmd 
+			git gui
+			
+
+	
+			
+	Working with GIT ::::
+	
+	
+	Developers' Workload ???
+	
+		- Enhancement Project / Bug fixing 		# Existing Project 
+		
+		- New Project 
+	
+	GIT File Work flow :
+	
+	Local Machine ::																Remote Server 
+	
+	Working Directory 				Staging Area			Local Repository 				Remote Repository
+	d:
+	
+	index.html 		------------>   index.html	---------->	index.html_v1.0		------------->	index.html_v1.0
+					  git add 					git commit 						git push
+	
+	
+		git clone 			# Used to copy/clone the entire remote repository to local machine 
+		
+		git add				# Used to add the changes from working directory to staging area 
+		
+		git commit			# used to commit the changes from staging area to local repository
+		
+		git push 			# Used to push the changes from local repository to remote repository
+		
+		git pull/git fetch 	:
+			- Both git pull & git fetch are used to handle the incremental changes from remote repository.
+			
+			GIT FETCH :
+				It is used to just check for incremental changes in remote repository. If there are any changes exists, the information about that changes will be just updated in the local repository. git fetch will never update the changes in the working directory. 
+				
+			GIT PULL :
+				It is used to check for incremental changes in remote repository. If there are any changes exists, the information about that changes will be updated in the local repository as well as the changes will be updated in the working directory. 				
+				
+		git init			# Used to Initialize/Create a Repository in Local Machine
+							# It will create .git directory (GIT Directory!)
+							# It will create a default branch called 'master' branch <master/main>
+			
+		Fork 				# Used to copy one remote repository to another remote repository
+		
+		
+	Working with GIT Misc. Commands :::::
+	
+	GIT CLI :
+	
+		git --version 
+	
+	Folder Structure :
+	
+	Java_Developer:
+	
+	Java_Project_Folder - Workspace 
+		src 
+			*.java 
+		test 
+			*.java 
+		target
+			*.war 
+		application.properties 
+		Database_credentials
+		
+	Local Machine ::														
+    
+    Working Directory 				Staging Area				Local Repository
+    d:
+    
+    file1.txt 		------------> 	 file1.txt   ---------->	 file1.txt(commit_id)
+    				  git add 					 git commit 					
+					  
+	
+	
+	In Local Machine :::
+	
+	Open git bash terminal 
+	
+	cd d:
+	mkdir Edu-PoW-July27
+	cd Edu-PoW-July27
+	mkdir project-repo1 
+	cd project-repo1
+	
+	git init 
+
+	git config --global user.name "Loksai"						# one time activity
+			
+	git config --global user.email "loksai@asdfasd.com"			# one time activity
+			
+	git status 
+	
+	echo "record" >> file1.txt 
+	
+	git add file1.txt 
+	
+	git commit -m "Commit_msg"
+	
+	git log 
+	
+	
+	git config ::::			# Used to configure the user name and user email
+							# User Name and User Email should be configured before the very first commit.
+							# As a best practise, setup the user.name and user.email as a global config. 
+	
+		Local Configuration :
+			- It is applicable within a repository
+			
+			git config user.name "Loksai"
+			
+			git config user.email "loksai@asdfasd.com"			
+			
+		
+		Global Configuration :
+			- It is applicable to all the repositories
+			
+			git config --global user.name "Loksai"
+			
+			git config --global user.email "loksai@asdfasd.com"
+	
+
+	git ls-files 			# To get the list of files tracked by git
+	
+	
+	git add :::
+	
+			git add <file_name>
+			
+			git add <file1_name> <file2_name> 
+			
+			git add *.doc 
+			
+			git add .						# To add all the files to staging area
+			
+	
+	git log :::
+	
+		git log --oneline 
+		
+		git log --oneline -1 
+		
+		git log --stat 
+		
+		git log -1
+		
+	
+	git show <commit_id>
+	
+	
+	git commit :::
+	
+		git commit -m "Commit_msg"
+		
+		# Commit message should be related to specific rel/cr 
+		
+		Release_Number 
+		CR Number 
+		
+		git commit -m "CR082024 - Updated Payment.java" 
+		
+		
+		git commit --amend -m "Valid Msg"		# Update just the commit message.
+		
+
+	Undo the Changes from Staging area
+	- Unstaging!
+	
+	
+		git rm --cached <file_name>  #Just remove from staging area. But the file will be available in working directory
+	
+		git rm -f <file_name>		 # To Permanently remove from staging area as well as from working directory
+	
+	
+	git diff :::
+	
+		get the difference between the working directory and local repository
+		
+	
+	.gitignore :::
+	
+		# It is used to ignore the files from tracking!
+		
+		
+	Java_Project_Folder - Workspace 							===> remote repo
+		src 
+			*.java 
+		test 
+			*.java 
+		target
+			*.war 
+		application.properties 
+		Database_credentials	
+		
+		
+	Create .gitignore file 
+	
+	add the file name / file pattern to be ignored 
+	
+	save and commit the .gitignore file 
+	
+	As a best practise, we .gitignore should be the very first commit in the repositories.
+	
+
+	
+	Pre-Requisites :
+		Lab Environments 
+			AWS Cloud Platform to create VMs and install DevOps Tools
+				- Create AWS Free Tier Account 	
+				
+		https://signin.aws.amazon.com/signup?request_type=register			==> To create new account 
+				
+		https://aws.amazon.com/console/										==> To login to aws console
+	
+	
+		To Create AWS Free Tier Account :
+			- Free Tier Account will be eligible for 12 Months 
+		
+			- Active Email_ID & Mobile_Number
+			- Valid Credit/Debit Card - Enabled for International Transaction
+			
+			- Login to AWS Console as a root user : using Email_ID and Password 
+		
+		All Windows Users :
+		
+			Install SSH Agent - MobaXterm on Windows Machine  # To connect to Remote Servers
+				https://mobaxterm.mobatek.net/download-home-edition.html
+					- Select MobaXterm Installer Edition!
+					- It download a zipfile 
+					- Extract it
+					- goto that extracted folder 
+					- execute the exec file.
+		
+		Create dockerhub account : https://hub.docker.com
+		
+		Install Visual Studio Code : https://code.visualstudio.com/download
+	
+Next ::
+
+	git revert 
+	
+	git reset 
+	
+	git branches 
+	
+	git remote repository 
+	
+	
+	
