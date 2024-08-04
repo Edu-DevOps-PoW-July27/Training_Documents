@@ -1,0 +1,62 @@
+######################
+Day 4: 4th Aug. 2024
+######################
+
+	Jenkins ::: Build Orchestration Tool :
+	
+		- Jenkins is a Open-Source Build Orientation Tool 
+		- Used to create end-to-end CI/CD Automation pipeline/workflow
+		
+		Jenkins Architecture :
+		
+		- Jenkins is Master-Slave Architecture
+		
+					- 	The Slave Nodes can considered as build server - Used to build the application.
+						Build is a process of compiling the source code and create artifacts(binaries - *.war)
+						
+		Jenkins_Master	(VM)	- 	Install Jenkins 
+									It is used to create Jenkins CICD Pipeline Jobs/Projects
+									It is used to schedule the jobs to execute in the slave nodes. 
+			
+			Jenkins_Slave1	(VM)		- 	Java 
+			Jenkins_Slave2	(VM)		- 	Python 
+			Jenkins_Slave3	(VM)		-	Angular
+			Jenkins_Slave4	(VM)		- 	.Net 
+			
+	Working with Jenkins :::
+	
+		Developers' Perspective ::
+			- Developers are just the consumers of Jenkins 
+			
+		DevOps Perspective :::
+		
+			- DevOps Team are the Owner/Administrator of Jenkins
+			
+		Roles & Responsibilites :::
+		
+			- Installation of Jenkins 
+			- Management of Jenkins Server 
+			- Plugins Management 
+			- Global System Managment 
+			- Tools Management 
+			- User Management 
+			- Security Management 
+			- Credential Management 
+			- Create the CICD Pipeline Projects/Jobs 
+			- Onboard the Application Teams to Jenkins CI/CD Process 
+			- Manage Backup & Recovery process
+			- Trouble-shooting 
+			
+	
+	- Installation of Jenkins 		
+		
+		- Create AWS Free-Tier Account 
+		
+		- Create EC2 Instance 
+		- Connect to EC2 Instance:
+			- EC2 Instance Connect 							# Using web browser
+			- Using SSH Agents like MobaXterm/Putty 		# Used by the Windows Users
+			- Terminal to connect 							# Mac Users
+			
+		- Login to EC2 Instance as a root user and install the required packages.	
+		
