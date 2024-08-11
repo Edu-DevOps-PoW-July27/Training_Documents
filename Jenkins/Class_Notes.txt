@@ -60,3 +60,430 @@ Day 4: 4th Aug. 2024
 			
 		- Login to EC2 Instance as a root user and install the required packages.	
 		
+
+######################
+Day 5: 10th Aug. 2024
+######################				
+	
+	- Installation of Jenkins 		
+		
+		- Create AWS Free-Tier Account 
+		
+		- Create EC2 Instance 
+		- Connect to EC2 Instance:
+			- EC2 Instance Connect 							# Using web browser
+			- Using SSH Agents like MobaXterm/Putty 		# Used by the Windows Users
+			- Terminal to connect 							# Mac Users
+			
+		- Login to EC2 Instance as a root user and install the required packages.	
+		
+	
+	
+	Working with Jenkins ::
+	
+		AWS Cloud Platform : 12 Months Free tier Account 
+		
+			- Billing Dashboard
+			- Security Management
+		
+		
+		Regions 
+			Availability Zones 
+				- Data Centers - Servers - EC2 Instances(VM)
+		
+		1. Create EC2 Instances -> Virtual Machines
+		
+			AMI - Ubuntu v22.04 LTS
+			
+				Default user name is : ubuntu 
+		
+		
+			Can run 01 VM 	- 750Hrs/Month
+					10 VMs  - 75Hrs/Month
+		
+		2. Connect to EC2 Instance:
+			- EC2 Instance Connect 							# Using web browser
+			- Using SSH Agents like MobaXterm/Putty 		# Used by the Windows Users
+					https://mobaxterm.mobatek.net/download-home-edition.html
+						- Here choose Installer Edition to download  
+						- Extract zipfile 
+						- Goto to that Extract folder
+						- Execute *.exec
+						
+					SSH Key Based Authentication :
+						- Host_Name(Public_IP_Address)
+						- User_Name
+						- Private_Key
+						
+			- Terminal to connect 							# Mac Users	/ Ubuntu Users 	
+	
+		
+		Install Jenkins : 	https://www.jenkins.io/doc/book/installing/
+							https://www.jenkins.io/doc/book/installing/linux/
+							
+			Set Jenkins to listen on port 8080
+			
+			
+			Linux Package Managers:::
+				- Install/Uninstall/Upgrade the Packages
+				- Package Managers are based on the Distributions 
+				- Package Managers can be executed only as a root user.
+				
+			Linux Distributions :
+			
+				Debian/Ubuntu 			- apt / apt-get 
+				Fedora 					- dnf 
+				RHEL/Centos				- yum 
+				Amazon Linux(latest) 	- dnf
+							(previous) 	- yum
+				
+				
+
+			- Global System Management 
+			
+			
+			- Plugins Management 
+				- Used to Install/Uninstall/Upgrade the plugins
+			
+			- Tools Management 
+			- User Management 
+			- Security Management 
+			- Credential Management 
+			
+			
+		Create the Jenkins Projects/Jobs 
+		
+			- Free Style Project (Manual Configuration)
+			
+				Handling Variables :::
+				
+					"${var1}"
+					
+					"${var1}"
+				
+					- Environment Variables 
+						- 
+					- User Defined Variables
+					
+						envi = "QA"
+					
+					
+			- Pipeline Project (Configured using groovy scripts)
+			
+				- Scripted Pipelines 
+					- Typical groovy scripts
+					
+				- Declarative Pipelines
+					- Simplified version of Scripted Pipelines
+					- Declarative approach
+	
+	
+				Pipelines are composed of various stages :
+				
+					Pipeline {
+					Stages{
+						Stage1{
+							step1{}
+							step2{}
+						}
+						Stage2{
+						}
+						}
+						}
+
+
+- Declarative Pipelines
+		
+
+CICD - Automate build and deployment 
+		
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+            }
+        }
+        stage('Application Build') {
+            steps {
+                echo 'Application Build'
+            }
+        }
+        stage('Deploy to Test Environment') {
+            steps {
+                echo 'Deployment'
+            }
+        }
+    }
+}
+
+Build Process :
+
+	Application Build is a process of compiling the source code and creating artifacts(Binaries - *.war/*.jar)
+	
+	Maven/Gradle -- Actual Build Tools 
+	
+	Maven ::;
+	
+		- pom.xml 
+			- Used to define the properties of application artifacts.
+			- Used to identify the dependencies and plugins to perform the application build.
+		
+		- Maven Goals 
+			- Compile 		# Used to just compile the source code 
+			- Test 			# Used to Compile and Test the Source code 
+			- Package		# Used to Compile,Test and create artifacts
+			- clean			# Clean the target folder 
+			
+		Eg.:
+		
+			mvn compile 
+			
+			mvn clean package 
+	
+Next :
+
+	Jenkins Master Slave Configuration ::
+	
+	Create CICD Pipeline Jobs 
+	
+
+######################
+Day 6: 11th Aug. 2024
+######################	
+
+	Jenkins Master Slave Configuration ::
+	
+	Create CICD Pipeline Jobs 
+	
+	Servers :
+	
+		Jenkins_Master (VM)			==> Create & Schedule Jenkins Pipeline Projects
+			Jenkins_Slave_Node (VM)	==> Build the Java Application & Create Artifacts
+		
+	Tools :
+	
+		Jenkins_Master (VM)			==> jdk,jenkins,git 
+			Jenkins_Slave_Node (VM)	==> git,jdk,Maven
+		
+	Integration of Master & Slave Nodes :
+	
+		Remote Server Access.
+	
+		Jenkins_Master (VM)			
+			Jenkins_Slave_Node (VM) - 	Create User & Credential
+										Private key will be shared in Jenkins Master to enable Slave Node Configuration
+		
+		Enable SSH Connection between Master & Slave Nodes.
+		
+			Host_Name 
+			User_Name 
+			Credentials (Key Based Auth - Private & Public/Authorized key)
+			
+				SSH Authentication Methods :				
+					Password Based Authentication
+					Token Based Authentication
+					Key Based Authentication
+					Passwordless Authentication
+					
+			
+	Create CI Pipeline :
+	
+pipeline {
+	agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+				git 'https://github.com/Edu-DevOps-PoW-July27/java-mvn-springbootapp.git'
+            }
+        }
+        stage('Application Build') {
+            steps {
+                echo 'Application Build'
+				sh 'mvn clean package'
+            }
+        }
+        stage('Deploy to Test Environment') {
+            steps {
+                echo 'Deployment'
+            }
+        }
+    }
+}
+
+	Environments ::
+	
+		Non-Prod Environments										Prod Environment
+	
+			Dev Environment
+			Build Environment
+			Test Environments
+				QA	- Quality Assurance Testing  
+				UAT - User Acceptance Testing 		===========>		Production Environments/Servers
+
+
+Setup the Target Environment :::
+
+	Target/Hosted Environment (VM):
+		Web Application Server like Tomcat/Nginx
+		
+
+	Servers :
+	
+		Jenkins_Master (VM)			==> Create & Schedule Jenkins Pipeline Projects
+			Jenkins_Slave_Node (VM)	==> Build the Java Application & Create Artifacts
+		
+		QA_Server (VM)				==> Run and Test the application artifacts 
+		
+	Tools :
+	
+		Jenkins_Master (VM)			==> jdk,jenkins,git 
+			Jenkins_Slave_Node (VM)	==> git,jdk,Maven
+		
+		QA_Server (VM)				==> jdk,tomcat (Runs in port 8080 by default)
+		
+	Integration of Jenkins Master & QA_Server :
+	
+		Enable SSH Connection between Master & Tomcat Server.
+		
+	Deployment ?
+	
+		Copy the artifacts from one server to another server.
+		
+		Source Machine										Target Machine 
+		
+			Jenkins_Slave 										Tomcat_Server 
+			
+				Source_Path											Target_Path
+		
+					target/demo-1.0-SNAPSHOT.war						/opt/tomcat/webapps
+			
+			Upon Deployment :
+			
+					target/demo-1.0-SNAPSHOT.war						/opt/tomcat/webapps/demo-1.0-SNAPSHOT.war
+					
+					
+	Publish Over SSH Plugin :
+		- Used to copy the artifacts to remote server 
+		
+		
+	Update the pipeline stage for deployment :
+	
+pipeline {
+	agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+				git 'https://github.com/Edu-DevOps-PoW-July27/java-mvn-springbootapp.git'
+            }
+        }
+        stage('Application Build') {
+            steps {
+                echo 'Application Build'
+				sh 'mvn clean package'
+            }
+        }
+        stage('Deploy to Tomcat_Server') {
+            steps {
+                script{
+                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Tomcat-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/demo-1.0-SNAPSHOT.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                }               
+            }
+        }
+    }
+}
+
+
+
+Build Triggers ::::
+
+	Build Periodic		https://crontab.guru/examples.html
+	
+		- Used to schedule the job to run based on the crontab
+	
+	Github Wehook
+
+		- Used to automate job trigger whenever there is any commit happened in the remote reository
+		
+		
+		http://13.233.208.38:8080/github-webhook/
+	Poll SCM 
+
+		- Used to schedule the job to run based on the crontab only if there any changes done in source code repository
+		
+		Test Cycles ::
+		
+			8am - 12pm - 3pm
+			
+			
+Email Notifications ::::
+		
+gmail server 
+		
+		
+SMTP Server :
+smtp.gmail.com
+
+SMTP Authentication
+
+SMTP Port :: 465
+
+Login to Gmail :::
+
+Click Manage Account Settings
+
+@Left side panel - select Security 
+
+MFA / Two Way Authentication --> mobile#
+search for app password
+App Password = 16 bytes of App Password. v***********************tzr
+What ? window
+Which Appln - email			
+		
+Post Build Action in the Jenkins Pipeline Jobs ::
+
+	success 
+	failure
+	unstable 			
+
+pipeline {
+	agent { label 'slave1' }
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+				git 'https://github.com/Edu-DevOps-PoW-July27/java-mvn-springbootapp.git'
+            }
+        }
+        stage('Application Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+            }
+			 post {
+				success {
+				  sh "echo 'Send mail on success'"
+					mail bcc: 'loksaieta223@gmail.com', body: 'The Job Status', cc: 'loksaieta223@gmail.com', from: '', replyTo: '', subject: 'Jenkins Build Successful', to: 'loksaieta223@gmail.com'
+				}
+				failure {
+				  sh "echo 'Send mail on failure'"
+					mail bcc: 'loksaieta223@gmail.com', body: 'The Job Status', cc: 'loksaieta223@gmail.com', from: '', replyTo: '', subject: 'Jenkins Build Failure', to: 'loksaieta223@gmail.com'
+				}
+			  }			
+        }
+        stage('Deploy to Tomcat_Server') {
+            steps {
+                script{
+                   sshPublisher(publishers: [sshPublisherDesc(configName: 'Tomcat-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/demo-1.0-SNAPSHOT.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                }               
+            }
+        }
+    }
+}
