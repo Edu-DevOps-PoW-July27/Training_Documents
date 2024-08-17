@@ -1,0 +1,73 @@
+
+######################
+Day 7: 17th Aug. 2024
+######################	
+
+	Configuration Management using Ansible!
+	
+	
+	Ansible ::
+	
+	IAC ==> Infra-Structure As Code!
+		==> Declarative Scripts!
+				==> Are based on *.yaml file format 
+				==> Composed of Keys & Values
+						key:value
+	
+	Dev Team ::
+	
+		30 Members Joined! 
+		
+			- Workstation/Desktop
+			- All the required tools/software pkgs shd be installed.
+	
+	
+	IAC - Terraform		===> Provision/Create the resources 
+	
+		- Ansible		===> Used to Configure the resources 
+		
+		
+		
+	Working with Ansible :::
+	
+		- Need for Ansible ?
+		- Ansible Architecture
+		- Ansible Components 
+			- Ansible Controller(VM)		# Install Ansible 
+			- Ansible Nodes(VM)				# Target Machines
+			- Inventory File 				# Used to maintain the Ansible Node Details 
+			- Modules						# Modules are set of functions/task to be executed in Ansbile Nodes 
+			- ansible.config				# Define the default properties of ansible
+			
+		- How to Interact with Ansible?
+			- Adhoc Commands 
+				- Is used to execute a module in the Ansible Nodes 
+				- This cannot be reusable 
+				
+				Eg.: 
+					apt install git 
+				
+			- Ansible Playbooks 
+				- Is used to execute some series of modules in the Ansible Nodes 
+				- It should be reusable
+				- It is writted using *.yaml file format
+
+				Install any package ::									# Tomcat WAS 
+					- Install the Pre-Requisites							- Installed JDK 		
+					- Install the Actual Package							- Installed Tomcat 
+					- Perform post Installation Activities 					- Started Tomcat 
+
+
+		- Ansible Concepts
+			- Handlers 
+			- Conditions 
+			- Ansbile Roles
+			
+		Installation and Configurations of Ansible Controller and Nodes ::
+			
+	
+	
+		
+		
+	
+	
