@@ -1,0 +1,94 @@
+######################
+Day 8: 18th Aug. 2024
+######################	
+
+
+	Fundamentals of Terraform ::	
+	
+		IAC Tool for Provisioning the Resource! 
+		
+		Use Terraform to provision AWS Resources ( EC2 Instance/)
+		
+		Working Model :
+		
+		Architecture :
+		
+		Process 
+	
+	
+			- Identify the Scope - Target Infra-Structure		- AWS 				AZURE 
+			- Write the Terraform Script based on the Scope		- EC2 Instance 
+			- Terraform Init 	- Initialize/Download the Terraform Provider to the project 
+			- Terraform Plan 	- Is used to preview the Terraform Script 
+			- Terraform Apply	- Implement the changes in the target
+			
+			
+		Working with Terraform :::
+		
+		- Install Terraform 
+			- On Windows Machine 
+			- https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+			
+			- https://developer.hashicorp.com/terraform/install
+			
+				- Download zip file 
+				- Extract 
+				- Create Environment Variable 
+					- Environment Variable Settings 
+					- Create path variable.
+					
+				
+				
+			
+		- Install Visual Studio Code - IDE 
+			- https://code.visualstudio.com/download
+			
+				Open VSCode 
+				Goto Extension tab 
+					Search for Terraform Extension
+						Install HashiCorp Terraform Extension on Visual Studio Code IDE.
+						
+		- Create Project in Visual Studio Code :
+
+
+		Terraform Registry ::::
+		
+	
+			- Identify the Scope - Target Infra-Structure		- AWS 				AZURE 
+			
+				Define the provider in the terraform script.
+					- Used to enable authentication and download the provider 
+							- AWS - Access Key and Secret Keys 
+							
+							1. Create Access Key and Secret Key from AWS Console
+							
+								Access Key :	dfgdfg
+									
+								Secret Key :	2dfgdfgdfgd
+									
+									
+			- Write the Terraform Script based on the Scope		- EC2 Instance 
+			
+			
+			- Terraform Init 	- Initialize/Download the Terraform Provider to the project 
+			- Terraform Plan 	- Is used to preview the Terraform Script 
+			- Terraform Apply	- Implement the changes in the target
+			
+			
+			Using Terraform :
+			
+				Create/Add Resource			+
+				
+				Change/Modify Resource 		~
+				
+				Destroy/Delete Resource		-
+				
+				
+			Terraform State File ::::
+			
+				- Used to have the current state of resources on the target environment
+				
+				
+			terraform import <resource_id> 			# Create a state file 
+			
+			
