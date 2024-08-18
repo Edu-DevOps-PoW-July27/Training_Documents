@@ -65,7 +65,22 @@ Day 7: 17th Aug. 2024
 			
 		Installation and Configurations of Ansible Controller and Nodes ::
 			
+
+######################
+Day 8: 18th Aug. 2024
+######################		
+		
+	Ansible 
 	
+	Fundamentals of Terraform 
+		
+	
+	
+		- Ansible Concepts
+			- Handlers 
+			- Conditions 
+			- Ansbile Roles	
+		
 	
 		
 		
