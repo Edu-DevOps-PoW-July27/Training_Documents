@@ -1,0 +1,33 @@
+######################
+Day 8: 18th Aug. 2024
+######################	
+
+	Containerization using Docker :::::
+	
+	
+	Virtual Machines :::
+	
+		- VMs are considered as Hardware level Virtualization 
+		- VMs are created using Hypervisor
+		- VMs are basically used to run the Operating System 
+		- VMs requires more time and memory to start up
+		- VMs will continue to run even if there is not task/application 
+	
+	
+	Containers :::
+
+		- Containers are considered as OS level Virtualization 
+		- Containers are created using Container Engine
+		- Containers are basically used to run the Applications/Tasks. NOT Operating System
+		- If there is no task/application, Container will immediately go to exit state
+		- Containers requires less time and memory to start up any task/application
+			Control Group & Namespace ==> Core Kernel OS Components
+
+Next :::
+	
+	
+	Containerization :::
+	
+		- Is a process of Packaging the application along with its dependencies.
+		
+	Docker Container Engine
