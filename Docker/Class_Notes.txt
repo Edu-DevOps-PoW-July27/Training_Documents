@@ -31,3 +31,265 @@ Next :::
 		- Is a process of Packaging the application along with its dependencies.
 		
 	Docker Container Engine
+
+
+######################
+Day 9: 24th Aug. 2024
+######################	
+
+	Docker and Kubernetes :::
+	
+	
+	Containerization :::
+	
+		- Is a process of Packaging the application along with its dependencies.
+		
+	Docker Container Engine
+	
+	Micro-Service Based Application services are Containerised!
+	
+	Terminologies ::::
+	
+		Container Engine :		
+			Docker 
+			
+		Container Registry :			
+			dockerhub 
+			
+		Container Repository :
+			- Sub-Set of Container Registry
+			
+		Container Image :
+			- It is a static file, that define the properties of the Container
+			- It composed of various level
+			- Non-Executable 
+			- It can be save and maintained in the Container Registry
+			
+		Container :
+			- Container is an executable unit of Container Images
+		
+		
+		
+	Working with Containers :
+	
+		Install Container Engine - Docker
+			
+			
+			sudo apt install docker.io -y
+	
+	
+		Using Docker Cli Commands we can interact with Docker Engine.
+		
+		docker --version
+		
+		docker images 			# get the list of images 
+		
+		docker ps 				# get the list of running containers
+		
+		docker ps -a 			# get the list of all containers
+		
+		dockerhub ==> we can get the container images!
+		
+		https://hub.docker.com/
+		
+		docker pull centos		# Is used to download the Container Image to the local machine 
+		
+		docker run centos 		# Is used to download the Container Image and create container 
+		
+		Container Run Mode :
+		
+			- Foreground/Attached Mode 		# Default Mode 
+						docker run centos
+			- Background/Detached Mode 
+						docker run -d centos			
+			- Interactive Mode 
+						docker run -it centos bash
+
+
+		docker stop <container_id>
+		
+		docker start <container_id>
+				
+		docker exec -it <container_id> bash 		# Used to login to the running container 
+		
+		Container Port Mapping / Binding ::::
+		
+			- It is used to map the container port with host port 
+			- It is used to expose the Container Applications to Internet
+			
+			
+			On VM Level:
+			
+				<external_ip_addr>:8080 		# To access the tomcat 
+				
+				
+			docker run -it -p 8088:8080 tomcat:8.0
+			
+			-p <host_port>:<container_port>
+			
+			<external_ip_addr>:<host_port> 		# To access the tomcat 
+			
+		Container Volume ::
+		
+			Persistant Data/Volume!
+
+			Stateless Applications 
+			
+			Stateful Applications
+			
+			
+			docker volume list 
+			
+			docker volume list
+			
+			docker volume create edu-pow-vol1
+
+			docker run -it --mount source=edu-pow-vol1,destination=/edu-pow-vol1 centos bash
+
+
+		Create Container Images and Publish to Container Registry ::::
+		
+			Jenkins_Master			
+				Build_Server_Slave1		-- created artifacts - mywebapp_svc1.war 
+																mywebapp_svc2.war
+				
+				Tested :: tomcat WAS - jdk_11, tomcat_8.0  to run and test - mywebapp.war service1 
+				
+				Tested :: tomcat WAS - jdk_17, tomcat_9.0  to run and test - mywebapp.war service2 
+				
+				Create Application Package/Image : (mywebapp.war,jdk_11,tomcat_8.0) - mywebapp_svc1_img
+				
+				This mywebapp_svc1_img will be published to Container Registry - dockerhub 
+			
+			QA_Environment 	- mywebapp.war 
+			
+				Install docker engine 
+					
+				Tomcat WAS - jdk_17, tomcat_10
+				
+				docker run/pull mywebapp_svc1_img
+
+				run it as a container 
+				
+			Containerization :::
+			
+				- Is a process of Packaging the application along with its dependencies.
+				
+				
+		Create Container Images ::
+
+			docker commit :::
+				- It is used to create a container  image based on the existing container reference 
+				Syntax:
+			
+				docker commit <container_id> <New_Container_Image_Name>:<tag>
+				
+				Eg.: 
+				
+				docker commit 8f86eb48e601 loksaieta/javabuildenv:v1.0
+			
+			docker build :::
+				- It is used to create a container  image from the scratch using Dockerfile
+				- Used by the developer to create application images
+				- Developers Creae DockerFile 
+				- Dockerfile Composed various Instructions
+
+				Syntax:
+			
+				docker build -t <New_Container_Image_Name>:<tag> .		# . at the end denoted the dockerfile reference		
+
+				Eg.: 
+				
+				docker build -t loksaieta/javamvnappimg1 .
+			
+			
+			vi Dockerfile 
+			
+			FROM ubuntu 
+			RUN apt update 
+			RUN apt install git -y
+			RUN apt install maven -y 
+			
+		
+		Publish Container Image to Container Registry :::
+		
+			- Login to Container Registry using Docker cli 
+			
+				Create Access Token in Dockerhub account 
+			
+				- Docker Login ID 
+						docker login -u XXXXXX
+				- Docker Login Access Token 
+						Prompt password : _____________________
+				
+				
+				
+			- docker push command 
+			
+			Syntax :
+				docker push <DockerHub_Repository_Name>/<New_Container_Image_Name>:<tag>
+			
+			Eg.: 
+				docker push loksaieta/javamvnappimg1
+				
+		Remove/Delete Container :::
+		
+			docker rm <container_id>
+			
+			
+		Remove/Delete Container Image :::
+		
+			docker rmi <DockerHub_Repository_Name>/<New_Container_Image_Name>:<tag>			
+			
+			docker rmi loksaieta/javabuildenv:v1.0
+			
+		Container Orchestration :::
+		
+			Micro-Service --> User Login Process --> 
+		
+			3-Tier Application
+			
+				Front_End Layer 			- C1 
+				
+				Application Layer 			- C2 
+				
+				Back_End/Database Layer 	- C3 
+			
+		
+			Docker Compose ::
+		
+				- Docker Compose is Utility used to run multiple Containers as a Service.
+				
+				- The Docker Container Service definition is create using *.yaml file/script 
+				
+				- mywebappservice.yaml 
+					C1
+					C2
+					C3 
+					
+				- mywebappservice.yaml  to create as service 
+				
+				docker-compose up / down 
+				
+		
+			Docker Swarm :
+			
+				- Is a Container Orchestration tool :::
+				
+				- It is used to Orchestrate the container to run and ensure high availability
+				
+				- It creates replicas of containers 
+				
+				- It is used to scale-up/scale-down the replicas 
+				
+			
+			Kubernetes :::
+			
+				- Is a Container Orchestration tool 				
+				- It is used to Orchestrate the container to run and ensure high availability			
+				- It creates replicas of containers 				
+				- It is used to scale-up/scale-down the replicas 
+				- Auto-Scaling 
+				- Load_Balancing 
+				
+	
