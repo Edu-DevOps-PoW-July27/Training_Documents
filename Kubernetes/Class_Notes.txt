@@ -1,0 +1,66 @@
+######################
+Day 9: 24th Aug. 2024
+######################	
+
+Kubernetes ::::
+
+	Kubernetes - Open-Source Container Orchestration Tools 
+
+				- Is a Container Orchestration tool 				
+				- It is used to Orchestrate the container to run and ensure high availability			
+				- It creates replicas of containers 				
+				- It is used to scale-up/scale-down the replicas 
+				- Auto-Scaling 
+				- Load_Balancing 
+
+				
+	Managed Services :
+	
+	AWS 	--> ECS/ECR/EKS
+	
+	Azure 	--> ACS/ACR/AKS 
+	
+	GCP 	--> GCE/GCR/GKE
+	
+			
+	Kubernetes Architecture :::
+	
+		Client/Server Architecture
+		
+			Kubernetes_Master 
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2
+				Kubernetes_WorkerNode3
+	
+	Kubernetes Components :::
+	
+	Kubernetes Concepts/Terminologies :::
+	
+		kubeadm				==> Is a command line utility to install and manage the kubernetes cluster
+		kubectl				==> Is a command line utility to interact with the Kubernetes Master
+		
+		pod 
+		
+		Cluster 			==> Is collection of workerNodes 
+		
+			Kubernetes_Master 
+				Kubernetes_Cluster1
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3
+				Kubernetes_Cluster2
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3
+				Kubernetes_Cluster3
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3
+				
+		Controller Objects 
+		
+		Services 
+		
+		Volumes 
+		
+		
