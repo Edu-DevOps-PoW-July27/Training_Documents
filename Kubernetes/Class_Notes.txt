@@ -64,3 +64,71 @@ Kubernetes ::::
 		Volumes 
 		
 		
+######################
+Day 10: 25th Aug. 2024
+######################			
+		
+	Kubernetes Architecture :::
+	
+	Kubernetes Components :::
+	
+	Kubernetes Concepts/Terminologies :::
+	
+	Pods 
+	
+	NodePort Service 
+	
+	Controller Objects :
+	
+		Replication Controller 	- RC 
+		Replicaset 	- RS 
+		Daemonset 
+		Deployments 
+	
+		Replication Controller  & Replicaset 
+			- Are used to deploy certain instances of pods 
+			- RC Uses the Equality Based Operator {envi = dev}
+			- RS Uses the SetBased Operator envi = {dev,qa} 
+			
+			Replica - 5 
+			Scale-up 
+			Scale-Down 
+			
+			
+			E_Commerce website :
+			
+				10000 users can access this site simultaneously!	==> 100 Copies of Pods
+				
+				50000 >>>>>>>>>> 500 
+				
+				10000 <<<<<<<<<< 100
+				
+				
+		Daemonset :::
+			- Used to execute a copy of pod in all the availabe nodes / set of nodes 
+			
+			To Execute :
+			
+				Logs
+				Monitors
+				
+		Deployment Controller Object::
+
+			- Deploy the Pods 
+			- Creates Replicas of Pods using Replicaset 
+			- Scale-Up 
+			- Scale-Down 
+			- Upgrade 
+			- Down-grade 
+			
+			All these things can be performed without any downtime.
+			Deployment Controller Object uses the Rolling-Update Strategy for deployment
+			
+			This creates :
+			
+				Deployment Controller 
+				Relicaset 
+				Pods Instances 
+				
+		
+				
