@@ -1,0 +1,72 @@
+######################
+Day 11: 31st Aug. 2024
+######################					
+			
+	DevOps CICD Pipelines Demo :::
+	
+	
+		- Infra-Structure Management 	-- Using Terraform & Ansbile
+		
+		- Deployments 					--> Jenkins, Docker, Kubernetes
+		
+		- Monitoring					--> Prometheus & Grafana
+	
+	
+	
+	
+	DevOps CICD Pipeline to Automate Micro-Service Based Application Builds and Deployments? 
+	
+	Infra-Structure for DevOps ::
+	
+		List of Servers :
+		
+			- Jenkins_Master 		(VM)
+				- Jenkins_SlaveNode (VM)
+			- Kubernetes_Master (VM)
+				- Kubernetes_WorkerNode1 (VM)
+				- Kubernetes_WorkerNode2 (VM)
+
+		
+		Purpose of Servers :
+			
+			- Jenkins_Master 		(VM)		==>	Create Jenkins CICD Pipeline Projects & Scheduling Build to Slave Nodes 
+
+				- Jenkins_SlaveNode (VM)		==>	To perform the Actual Build
+									(Application Build - *.war & Application Image Build - Container Image) & Push that image to container Registry)
+
+			- Kubernetes_Master (VM)			==> Create and Schedule the Deployments to Worker Nodes 
+				- Kubernetes_WorkerNode1 (VM)	==> To Ensure High Availability of Applications
+				- Kubernetes_WorkerNode2 (VM)	==>	To Ensure High Availability of Applications	
+
+					
+		Tools to be installed in the servers :	
+		
+			- Jenkins_Master 		(VM)		==> git, jdk, jenkins 
+				- Jenkins_SlaveNode (VM)		==> git, jdk, maven, Docker 
+				
+			- Kubernetes_Master (VM)			==> All Kubernetes Components 
+				- Kubernetes_WorkerNode1 (VM)
+				- Kubernetes_WorkerNode2 (VM)
+				
+			
+			- Jenkins_Master 		(VM)		==> git, jdk, jenkins 
+				- Jenkins_SlaveNode (VM)		==> git, jdk, maven, Docker 
+				
+			- QA_Server - Tomcat 
+			
+				
+				
+		Create  CICD Pipeline :::
+		
+		Stages :::
+		
+			- SCM_Checkout 
+			- Maven_Build 
+			- Docker Build
+			- Login to DockerHub 
+			- Push Appln. Image to DockerHub
+			
+			- Deploy to Kubernetes
+			
+		
+			
