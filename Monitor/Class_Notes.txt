@@ -1,0 +1,48 @@
+######################
+Day 11: 31st Aug. 2024
+######################		
+				
+				
+	Monitoring :::
+	
+		Production Monitoring Team 
+		Production Support Team 
+	
+		Continuous Monitoring ::
+			
+			- It is used to ensure business continuity
+			
+			- Infra-Structure Monitoring
+				- Used to monitor the Infra-Structure 
+				
+					CPU/Memory/Network Traffic
+					
+					75% of CPU/Memory - Alert 
+				
+				Tools:
+				- Prometheus/Grafana/Dynatrace/Splunk/Nagios
+				- Jenkins 
+				
+			- Application Monitoring
+			
+				- Monitor the Application Performance 
+				
+				- call to Database server
+				
+				Tools :
+				
+				- AppDynamics/DataDog 
+				- Jenkins 
+				
+				
+		- Prometheus/Grafana/
+		
+			- Prometheus  	--> Is a Infra-Structure Monitoring Tool 
+				--> Time-Series Database 
+				--> Prom-QL 
+			- Grafana 		--> Is a Visualization Tool
+			
+			
+		Working with Prometheus & Grafana :::
+		
+		
