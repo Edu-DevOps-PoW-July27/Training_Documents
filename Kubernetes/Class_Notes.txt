@@ -131,4 +131,92 @@ Day 10: 25th Aug. 2024
 				Pods Instances 
 				
 		
+
+		
+######################
+Day 11: 31st Aug. 2024
+######################			
 				
+	Deployment Controller Object::
+
+		- Deploy the Pods 
+		- Creates Replicas of Pods using Replicaset 
+		- Scale-Up 
+		- Scale-Down 
+		- Upgrade 
+		- Down-grade 
+		
+		All these things can be performed without any downtime.
+		Deployment Controller Object uses the Rolling-Update Strategy for deployment
+		
+		This creates :
+		
+			Deployment Controller 
+			Relicaset 
+			Pods Instances 
+			
+	
+	Namespaces :::
+	
+		Namespace is the Logical Partition of the Kubernetes Cluster 
+		
+		
+		KubeSystem
+		Default 
+		Kubeflannel
+		
+		Non-Prod Kubernetes_Cluster 					Prod Kubernetes_Cluster
+		Dev 												Active_Prod NS
+		
+		QA 
+		
+		UAT 
+		
+		
+		
+		Jenkins_Master 
+			Jenkins_Slave 	*.war
+			
+		QA_Tomcat_Server 	===> *.war
+		
+		UAT_Server 			===> *.war
+		
+		PROD_Server 
+		
+		
+			Non-Prod :
+			
+			Kubernetes_Master 
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					
+					
+			deploy pod ?
+			
+			default namespace 
+			
+				DEV 
+				
+				QA 
+
+				UAT 
+	
+	
+	Deployment ::
+	
+		Prod Environment :
+		
+			
+			
+			PROD_Server(passive)		LIVE Deploy mywebapp_v2.0
+				- Upon thorough testing in passive server
+					- make this as Active LIVE 
+											 
+		Prod Environment:
+		
+		Kubernetes_Master 	(Active NS)				mywebapp_v1.0	# Remove this
+							(ACTIVE NS)			LIVE mywebapp_v2.0
+				Kubernetes_WorkerNode1
+				Kubernetes_WorkerNode2
+				
+
