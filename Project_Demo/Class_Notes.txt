@@ -68,5 +68,212 @@ Day 11: 31st Aug. 2024
 			
 			- Deploy to Kubernetes
 			
+
+
 		
+######################
+Day 11: 31st Aug. 2024
+######################	
+
+
+	Automation of Application Build and Deployment
+	
+	Process Automation 
+	
+		- Scripting
+		
+			- Linux Machine 
+			
+				- Linux Command & Shell Scripting!
+			
+			- *.yaml Scripts 
+			
+			- Groovy Scripts 
+			
+			- Python Scripting Level / Web Application Development ****
+			
+		Orchestration of Tools !
+		
+			Open-Source :
+			
+				- Jenkins - Build Orchestration Tool 
+		
+			Managed Services :
+			
+				- Azure DevOps Service - Azure Repo, Azure Pipelines 
+				
+				- AWS CodePipeline 
+				
+				- gitlab-CI 
+				
+				- Bamboo
+		
+		
+		AWS Cloud Essentials *** 
+		
+		Azure Cloud Fundamentals *** 
+		
+		Create  CICD Pipeline :::
+		
+		Stages :::
+		
+			- SCM_Checkout 									git 
+			- Maven_Build 									maven 
+			- Docker Build									docker 
+			- Login to DockerHub 							dockerhub & docker 
+			- Push Appln. Image to DockerHub				dockerhub & docker 
+			
+			- Deploy to Kubernetes							Kubernetes
+		
+		Onboard Applications :
+		
+			- Get the Valid Source Code Repository URL 
+			
+			- Verify/Validate the Source Code Repository
+			
+				- Application  Build :
+					- pom.xml File
+						- mvn compiler plugins
+						- junit testing tools 
+						- package attributes 
+						
+					- compile,test,create artifacts ?
+						- mvn clean package(compile,test,create artifacts)
+				
+				- Docker Build :
+					- Dockerfile 
+							
+							vi Dockerfile 
+							
+							FROM tomcat:8.0
+							COPY .target/*.war /usr/local/tomcat/webapps
+							EXPOSE 8080
+				
+				- Kubernetes_Deploy :
+					- Manifest File
+						- Deployment Controller Object 
+					
+			
+			
+			
+			
+		Implementation Procedure :
+			
+			1. Create the Required Servers/VMs :
+			
+			2. Install the Required Tools :
+			
+			3. Integrate the Servers :	
+				Jenkins_Master with Jenkins_Slave 
+				
+				Jenkins_Master with Kubernetes_Master
+					- This can be done using Publish Over SSH Plugins on Jenkins
+			
+			4. Create CICD Pipeline Templates :
+			
+			5. Onboard Applications :
+			
+			
+			
+pipeline {
+	agent { label 'pwcslave1' }
+
+	environment {	
+		DOCKERHUB_CREDENTIALS=credentials('dockerloginid')
+	}
+	
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+				git 'https://github.com/Edu-DevOps-PoW-July27/java-mvn-springbootapp.git'
+            }
+        }
+        stage('Application Build') {
+            steps {
+                echo 'Perform Application Build'
+				sh 'mvn clean package'
+            }
+		}
+        stage('Build Docker Image') {
+            steps {
+				sh 'docker version'
+				sh "docker build -t loksaieta/loksai-eta-app:${BUILD_NUMBER} ."
+				sh 'docker image list'
+				sh "docker tag loksaieta/loksai-eta-app:${BUILD_NUMBER} loksaieta/loksai-eta-app:latest"
+            }
+        }
+		stage('Login2DockerHub') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+		stage('Publish_to_Docker_Registry') {
+			steps {
+				sh "docker push loksaieta/loksai-eta-app:latest"
+			}
+		}
+		stage('Deploy to PoW-Kubernetes') {
+            steps {
+				script {
+				sshPublisher(publishers: [sshPublisherDesc(configName: 'PoW-Kubernetes', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f k8sappdeploy.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+			}	
+            }
+		}
+	}
+}
+			
+
+
+
+sshPublisher(publishers: [sshPublisherDesc(configName: 'PoW-Kubernetes', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f k8sappdeploy.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
+
+
+#k8sappdeploy.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loksai-eta-deploy
+  labels:
+    app: loksai-eta-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loksai-eta-app
+  template:
+    metadata:
+      labels:
+        app: loksai-eta-app
+    spec:
+      containers:
+      - name: loksai-eta-container
+        image: loksaieta/loksai-eta-app
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loksai-eta-np-service
+  labels:
+    app: loksai-eta-app
+spec:
+  selector:
+    app: loksai-eta-app
+
+  type: NodePort
+  ports:
+  - nodePort: 31028
+    port: 8080
+    targetPort: 8080	
+	
+	
+
+kubectl create -f k8sappdeploy.yaml		
+
+kubectl apply -f k8sappdeploy.yaml		# recommended to use in the automation scripts 
 			
